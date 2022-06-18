@@ -1,0 +1,56 @@
+<?php 
+
+// php operators
+// https://www.w3schools.com/php/php_operators.asp
+$a = 10;
+$b = 5;
+$c = $a + $b;
+echo $c;
+echo "<br>";
+$c = $a - $b;
+echo $c;
+echo "<br>";
+$c = $a * $b;
+echo $c;
+echo "<br>";
+$c = $a / $b;
+echo $c;
+echo "<br>";
+$c = $a % $b;
+echo $c;
+echo "<br>";
+$c = $a ** $b;
+echo $c;
+echo "<br>";
+$c = $a++;
+echo $c;
+echo "<br>";
+$c = ++$a;
+echo $c;
+echo "<br>";
+$c = $a--;
+echo $c;
+echo "<br>";
+$c = --$a;
+echo $c;
+echo "<br>";
+$c = $a += $b;
+echo $c;
+echo "<br>";
+$c = $a -= $b;
+echo $c;
+echo "<br>";
+$c = $a *= $b;
+echo $c;
+echo "<br>";
+$c = $a /= $b;
+echo $c;
+echo "<br>";
+$c = $a %= $b;
+echo $c;
+echo "<br>";
+$c = $a **= $b;
+echo $c;
+echo "<br>";
+$c = $a .= $b;
+echo $c;

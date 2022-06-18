@@ -1,0 +1,50 @@
+<?php 
+// php string
+echo "Hello World!";
+echo "<br>";
+$name = "Ashinindavudha";
+echo $name;
+echo "<br>";
+$color = "red";
+echo "My car is " . $color . ".";
+echo "<br>";
+$shirt = "sleev-less";
+$conbination = "I like " . $shirt . "." . "I like " . $color . ".";
+echo $conbination;
+echo "<hr>";
+$pharase_1 = "student who come late";
+$pharase_2 = "student who come early";
+$combine = $pharase_1 . " " . $pharase_2;
+echo $combine;
+
+// php string function
+echo "<hr>";
+$phrase = "Don't panic";
+echo "Uppercase : " . strtoupper($phrase);
+echo "<br>";
+echo "Lowercase : " . strtolower($phrase);
+echo "<br>";
+echo "Uppercase first : " . ucfirst($phrase);
+echo "<br>";
+echo "Uppercase words : " . ucwords($phrase);
+echo "<hr>";
+$phrase_test = "You are a beautiful person";
+echo "Length : " . strlen($phrase_test);
+echo "<br>";
+echo "Trim : " . trim($phrase_test);
+echo "<br>";
+echo "Find : " . strstr($phrase_test, "a");
+echo "<br>";
+echo "Replace : " . str_replace("a", "e", $phrase_test);
+echo "<br>";
+echo "Repeat : " . str_repeat($phrase_test, 2);
+echo "<br>";
+echo "Count : " . str_word_count($phrase_test);
+echo "<br>";
+echo "Position : " . strpos($phrase_test, "you");
+echo "<br>";
+echo "Position : " . strrpos($phrase_test, "you");
+echo "<br>";
+echo "Substring : " . substr($phrase_test, 0, 5);
+echo "<br>";
+echo "Substring : " . substr($phrase_test, -5);
