@@ -70,7 +70,8 @@ if(isset($_POST['signup']))
 {
  $name = $_POST['name'];
  $email = $_POST['email'];
- $password = $_POST['password'];
+ //$password = $_POST['password'];
+ $password = md5($_POST['password']);
 
  $query = "INSERT INTO users(user_name, user_email, user_pass) VALUES('$name', '$email', '$password')";
  $db->insert($query);
