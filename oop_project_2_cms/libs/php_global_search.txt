@@ -1,0 +1,42 @@
+<?php 
+function xenSelectCarsGlobal($strQuery=null) 
+    {
+        $arrKeywords = ($strQuery !== null) ? explode(' ', $strQuery) : array();
+
+        $this->db->select('*');
+        $this->db->from('sel_car_details');
+        $this->db->join('derivative', 'derivative.der_id = sel_car_details.der_id', 'left');
+        $this->db->join('variant', 'variant.var_id = sel_car_details.var_id', 'left');
+        $this->db->join('model', 'model.model_id = sel_car_details.mod_id', 'left');
+        $this->db->join('make', 'make.make_id = sel_car_details.mk_id', 'left');
+        $this->db->join('car_color', 'car_color.color_id = sel_car_details.color_id', 'left');
+        $this->db->join('body_type', 'body_type.body_id = sel_car_details.body_type_id', 'left');
+        $this->db->join('fuel_type', 'fuel_type.fuel_id = sel_car_details.fuel_type_id', 'left');
+        $this->db->join('gallery', 'gallery.sel_carid = sel_car_details.sel_car_id', 'left');
+        $this->db->where('sel_car_details.status', '5');
+        if(!empty($arrKeywords)) {
+            foreach($arrKeywords as $strKeyword) {
+                $this->db->or_like('fuel_type.fuel_name', $strKeyword);
+                $this->db->or_like('sel_car_details.engine_size', $strKeyword);
+                $this->db->or_like('sel_car_details.mileage', $strKeyword);
+                $this->db->or_like('derivative.der_name', $strKeyword);
+                $this->db->or_like('variant.variant', $strKeyword);
+                $this->db->or_like('model.model', $strKeyword);
+                $this->db->or_like('make.maker', $strKeyword);
+                $this->db->or_like('car_color.col_name', $strKeyword);
+                $this->db->or_like('body_type.body_name', $strKeyword);
+            }
+        }
+
+        $qry = $this->db->get();
+
+        if ($qry->num_rows() != 0) {
+            return $qry->result_array();
+        } else {
+            return false;
+        }
+    } 
+
+    // https://stackoverflow.com/questions/27921808/implement-global-search-in-php
+
+    
