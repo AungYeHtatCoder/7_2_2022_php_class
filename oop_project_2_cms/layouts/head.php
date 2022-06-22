@@ -1,9 +1,3 @@
-<?php 
-include_once 'libs/config.php';
-include_once 'libs/database.php';
-
-$db = new database();
-?>
 <!DOCTYPE html>
 <html lang="en">
 

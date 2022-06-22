@@ -36,7 +36,7 @@ function xenSelectCarsGlobal($strQuery=null)
             return false;
         }
     } 
-
+    
     // https://stackoverflow.com/questions/27921808/implement-global-search-in-php
 
     
