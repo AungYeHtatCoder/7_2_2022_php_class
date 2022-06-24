@@ -32,7 +32,7 @@ class database
     {
         $insert = $this->link->query($query);
         if ($insert) {
-            header("Location: index.php?insert= Post inserted ...");
+            header("Location: ../admin/dashboard.php?msg= Post inserted ...");
         }else {
             echo "Post did not insert";
         }
@@ -44,7 +44,7 @@ class database
     {
         $update = $this->link->query($query);
         if ($update) {
-            header("Location: index.php?update= Post updated ...");
+            header("Location: index.php?msg= Post updated ...");
         }else {
             echo "Post did not updated";
         }
@@ -55,7 +55,7 @@ class database
     {
         $delete = $this->link->query($query);
         if ($delete) {
-            header("Location: index.php?delete= Post deleted ...");
+            header("Location: index.php?msg= Post deleted ...");
         }else {
             echo "Post did not delete";
         }

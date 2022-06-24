@@ -33,6 +33,11 @@ $categories = $db->select($query);
   <div class="row">
    <!-- Blog entries-->
    <div class="col-lg-8">
+    <?php 
+    if (isset($_GET['msg'])) {
+      echo "<div class='alert alert-primary text-center'>".$_GET['msg']."</div>";
+    }
+    ?>
     <!-- Featured blog post-->
     <div class="card">
      <div class="card-header">

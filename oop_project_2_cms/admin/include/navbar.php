@@ -7,8 +7,8 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
     <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-    <li class="nav-item"><a class="nav-link" href="#!">Add New Post</a></li>
-    <li class="nav-item"><a class="nav-link" href="#!">Add New Category</a></li>
+    <li class="nav-item"><a class="nav-link" href="add_new_post.php">Add New Post</a></li>
+    <li class="nav-item"><a class="nav-link" href="add_new_category.php">Add New Category</a></li>
     <li class="nav-item"><a class="nav-link" href="../../index.php">View Blog</a></li>
     <li class="nav-item"><a class="nav-link active" aria-current="page" href="logout.php">Logout</a></li>
    </ul>
