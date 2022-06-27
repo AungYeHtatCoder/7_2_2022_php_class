@@ -1,50 +1,55 @@
 <?php 
-include_once '../libs/config.php';
-include_once '../libs/database.php';
-include_once '../date_function.php';
-//creating database object
-$db = new database();
-// getting the id
-$id = $_GET['id'];
-$query = "SELECT * FROM posts WHERE id = $id";
-$posts = $db->select($query);
-$single = $posts->fetch_assoc();
-// selecting categories
-$query = "SELECT * FROM categories";
-$categories = $db->select($query);
-// updating posts
-if (isset($_POST['update'])) {
-  //creating variables for the form data
- $title = $_POST['title'];
-  $content = $_POST['content'];
-  $category = $_POST['cat'];
-  $author = $_POST['author'];
-  $tags = $_POST['tags'];
+// db connection 
+$host = "localhost";
+$db_name = "oop_project";
+$username = "root";
+$password = "";
 
-  // creating vairable for the image
-  $image = $_FILES['image']['name'];
-  $image_tmp = $_FILES['image']['tmp_name'];
-  if ($title == "" || $content == "" || $category == "" || $author == "" || $tags == "" || $image == "") {
-    echo "Please fill all the fields";
-  }else {
-    move_uploaded_file($image_tmp, "../images/$image");
-   try {
-    $query = "UPDATE posts SET category_id = '$category', title = '$title', content = '$content', author = '$author', img = '$image', tags = '$tags' WHERE id = $id";
-    $update = $db->update($query);
-    if ($update) {
-      echo "<script>alert('Post updated successfully')</script>";
-      echo "<script>window.location.href='index.php'</script>";
-    }
-   } catch (Exception $e) {
-    echo $e->getMessage();
-   } 
-    $run = $db->update($query);
-
-    //unlink("../images/$single[image]");
-    unlink("../images/".$single['image']);
-  }
-
+$conn = mysqli_connect($host, $username, $password, $db_name);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
+// get post id
+$id = $_GET['id'];
+// get post data
+$query = "SELECT * FROM posts WHERE id = $id";
+$result = mysqli_query($conn, $query);
+$single = mysqli_fetch_assoc($result);
+// get categories
+$query = "SELECT * FROM categories";
+$result = mysqli_query($conn, $query);
+// update post
+$category_id = $_POST['cat'];
+$title = $_POST['title'];
+$content = $_POST['content'];
+$author = $_POST['author'];
+$tags = $_POST['tags'];
+$image = $_FILES['image']['name'];
+$image_tmp = $_FILES['image']['tmp_name'];
+$tags = $_POST['tags'];
+if ($title == "" || $content == "" || $category_id == "" || $author == "" || $tags == "" || $image == "") {
+    echo "Please fill all the fields";
+}else {
+    move_uploaded_file($image_tmp, "../images/$image");
+    $query = "UPDATE posts
+              SET category_id = '$category_id',
+                  title = '$title',
+                  content = '$content',
+                  author = '$author',
+                  img = '$image',
+                  tags = '$tags'
+              WHERE id = $id";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        header("Location: ../admin/dashboard.php?msg= Post updated ...");
+    }else {
+        echo "Post did not updated";
+    }
+}
+
+ 
+
+
 ?>
 <?php include("include/head.php") ?>
 
@@ -64,7 +69,7 @@ if (isset($_POST['update'])) {
       <h4>Update Post <span><a href="dashboard.php" class="btn btn-primary">Back To Dashboard</a></span></h4>
      </div>
      <div class="card-body">
-      <form action="edit_post.php?=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
+      <form action="update_post.php?=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
        <div class="mb-3">
         <label for="Title" class="form-label">Post Title</label>
         <input type="text" name="title" class="form-control" id="title" aria-describedby="Post Title"
@@ -80,9 +85,16 @@ if (isset($_POST['update'])) {
        <div class="mb-3">
         <select name="cat" class="form-select" aria-label="Default select example">
          <option selected>Select Post Category</option>
-         <?php while($row = $categories->fetch_array()) : ?>
-         <option value="<?php echo $row['id']; ?>"><?php echo $row['title'] ?></option>
-         <?php endwhile; ?>
+         <?php if ($result->num_rows > 0) : ?>
+
+         <?php while($row = $result->fetch_assoc()) : ?>
+         <?php $categories[] = $row; ?>
+         <?php echo "<option value='".$row[' id']."'>".$row['title']."</option>"; ?>
+
+         <?php endwhile ;?>
+         <?php endif ;?>
+
+
         </select>
        </div>
        <div class="mb-3">

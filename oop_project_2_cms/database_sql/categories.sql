@@ -71,3 +71,11 @@ INSERT INTO `categories` (`id`, `title`) VALUES
 (10, 'C#'),
 (11, 'JAVA животные'),
 (12, 'FLETTER');
+
+
+-- --------------------------------------------------------
+INSERT INTO `items` (`id`, `item_name`) VALUES (1, 'Apple'), 
+(2, 'Banana'),
+(3, 'Fruits'),
+(4, 'Water Melon')
+;

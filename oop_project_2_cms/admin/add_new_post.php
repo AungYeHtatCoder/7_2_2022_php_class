@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
     echo "Please fill all the fields";
   }else {
     move_uploaded_file($image_tmp, "../images/$image");
-    $query = "INSERT INTO posts(category_id, title, content, author, image, tags) VALUES('$category', '$title', '$content', '$author', '$image', '$tags')";
+    $query = "INSERT INTO posts(category_id, title, content, author, img, tags) VALUES('$category', '$title', '$content', '$author', '$image', '$tags')";
     $insert = $db->insert($query);
   }
 

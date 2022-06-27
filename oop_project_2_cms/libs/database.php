@@ -44,7 +44,7 @@ class database
     {
         $update = $this->link->query($query);
         if ($update) {
-            header("Location: index.php?msg= Post updated ...");
+            header("Location: ../admin/dashboard.php?msg= Post updated ...");
         }else {
             echo "Post did not updated";
         }
@@ -60,4 +60,42 @@ class database
             echo "Post did not delete";
         }
     }
+
+    // post edit function
+    
+    // update post function
+    public function update_post($category_id, $title, $content, $author, $image, $tags, $id)
+    {
+        $query = "UPDATE posts
+                  SET category_id = '$category_id',
+                      title = '$title',
+                      content = '$content',
+                      author = '$author',
+                      img = '$image',
+                      tags = '$tags'
+                  WHERE id = $id";
+        $update = $this->link->query($query);
+        if ($update) {
+            header("Location: ../admin/dashboard.php?msg= Post updated ...");
+        }else {
+            echo "Post did not updated";
+        }
+    }
+
+    // update category 
+    public function update_category($data)
+    {
+        $id = $data['id'];
+        $query = "UPDATE categories
+                  SET name = '$data'
+                  WHERE id = $id";
+        $update = $this->link->query($query);
+        if ($update) {
+            header("Location: ../admin/dashboard.php?msg= Category updated ...");
+        }else {
+            echo "Category did not updated";
+        }
+    }
+    
+    
 }

@@ -29,7 +29,7 @@ $posts = $db->select($query);
     <?php while($row = $posts->fetch_array()) : ?>
     <div class="card mb-4">
      <a href="#!"><img style="float: left; margin-right: 20px; margin-bottom: 10px;" class="card-img-top"
-       src="images/<?php echo $row['image']; ?>" alt="..." width="200px" height="200px" /></a>
+       src="images/<?php echo $row['img']; ?>" alt="..." width="200px" height="200px" /></a>
      <div class="card-body">
 
       <div class="small text-muted">ON <?php echo formatDate($row['date']) ; ?> BY <span><a class="btn btn-primary"

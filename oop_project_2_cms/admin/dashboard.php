@@ -2,6 +2,7 @@
 include_once '../libs/config.php';
 include_once '../libs/database.php';
 include_once '../date_function.php';
+include("../libs/ItemTable.php");
 $db = new database();
 $query = "SELECT * FROM posts";
 $posts = $db->select($query);
@@ -11,6 +12,11 @@ $posts = $db->select($query);
 
 $query = "SELECT * FROM categories";
 $categories = $db->select($query);
+$item_table = new ItemTable();
+$items = $item_table->get_all_items();
+
+
+
 ?>
 
 <style>
@@ -71,7 +77,7 @@ $categories = $db->select($query);
          <td><?php echo $row['author']; ?></td>
          <td><?php echo formatDate($row['date']); ?></td>
          <td>
-          <a class="btn btn-primary btn-sm" href="edit_post.php?id=<?php echo $row['id']; ?>">Edit</a>
+          <a class="btn btn-primary btn-sm" href="update_post.php?id=<?php echo $row['id']; ?>">Edit</a>
           <a class="btn btn-danger btn-sm" href="delete_post.php?id=<?php echo $row['id']; ?>">Delete</a>
         </tr>
         <?php endwhile; ?>
@@ -112,6 +118,39 @@ $categories = $db->select($query);
          <td>
           <a class="btn btn-primary btn-sm" href="edit_category.php?id=<?php echo $row_1['id']; ?>">Edit</a>
           <a class="btn btn-danger btn-sm" href="delete_category.php?id=<?php echo $row_1['id']; ?>">Delete</a>
+        </tr>
+        <?php endwhile; ?>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="card">
+     <div class="card-header">
+      <h4>Categories</h4>
+     </div>
+     <div class="card-body">
+      <table class="table table-striped">
+       <tr align="center">
+        <td colspan="4">
+         <h6>Manage Your Items : </h6>
+        </td>
+       </tr>
+
+       <tr>
+        <th>ID</th>
+        <th>Item Name</th>
+        <th>Action</th>
+       </tr>
+
+       <tbody>
+        <tr>
+         <?php while($row_2 = $items->fetch_array()) : ?>
+         <td><?php echo $row_2['id']; ?></td>
+         <td><?php echo $row_2['item_name']; ?></td>
+         <td>
+          <a class="btn btn-primary btn-sm" href="edit_item.php?id=<?php echo $row_2['id']; ?>">Edit</a>
+          <a class="btn btn-danger btn-sm" href="delete_category.php?id=<?php echo $row_2['id']; ?>">Delete</a>
+
         </tr>
         <?php endwhile; ?>
        </tbody>

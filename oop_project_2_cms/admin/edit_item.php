@@ -2,34 +2,16 @@
 include_once '../libs/config.php';
 include_once '../libs/database.php';
 include_once '../date_function.php';
+include("../libs/ItemTable.php");
 //creating database object
-$db = new database();
-// selecting categories
-// get id
+$db = new ItemTable();
 $id = $_GET['id'];
-$query = "SELECT * FROM categories";
-$categories = $db->select($query);
-// single category
-$query = "SELECT * FROM categories WHERE id = $id";
+$single_item = $db->get_single_item($id);
+$row = $single_item->fetch_assoc();
 
 
-// update category
-if (isset($_POST['update'])) {
-  //creating variables for the form data
- $title = $_POST['title'];
- 
-  
-  if ($title == "") {
-    echo "Please fill all the fields";
-  }else {
-    
-    $query = "UPDATE categories
-              SET title = '$title'
-              WHERE id = $id";
-    $insert = $db->update($query);
-  }
 
-}
+
 ?>
 <?php include("include/head.php") ?>
 
@@ -49,15 +31,15 @@ if (isset($_POST['update'])) {
       <h4>Edit Category <span><a href="dashboard.php" class="btn btn-warning">Back To Dashboard</a></span></h4>
      </div>
      <div class="card-body">
-      <form action="edit_category.php" method="post">
+      <form action="action/item_process.php" method="post">
        <div class="mb-3">
-        <label for="Title" class="form-label">Category Title</label>
-        <input type="text" name="title" class="form-control" id="title" aria-describedby="Category Title"
-         value="<?php echo $result['title']; ?>">
+        <label for="item_name" class="form-label"> Item Name</label>
+        <input type="text" name="item_name" class="form-control" id="item_name" aria-describedby="Category item_name"
+         value="<?php echo $row['item_name']; ?>">
        </div>
 
        <div class="mb-3 mt-5">
-        <input type="submit" name="update" class="btn btn-primary" id="title" value="Update Category">
+        <input type="submit" name="update" class="btn btn-primary" id="title" value="Update Item">
        </div>
       </form>
      </div>
