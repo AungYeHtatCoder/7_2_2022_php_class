@@ -1,0 +1,8 @@
+1 . defining a class
+2. class inheritance
+3. class methods 
+4. class properties
+5. instantiating 
+6. assess control modifires
+7. setters and getters 
+8. constructors 
