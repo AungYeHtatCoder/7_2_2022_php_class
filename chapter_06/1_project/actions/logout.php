@@ -1,7 +1,6 @@
-<?php
-include("../config/db_con.php");
+<?php 
 // user logout
-if(isset($_GET['logout'])){
-    session_destroy();
-    header("Location: ../index.php");
-}
+include("../config/db_con.php");
+session_start();
+session_destroy();
+header("location: ../login_form.php");
