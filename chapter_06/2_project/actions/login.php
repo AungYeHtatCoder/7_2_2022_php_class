@@ -13,11 +13,14 @@ if(isset($_POST['login'])){
   $row = mysqli_fetch_array($result);
   $count = mysqli_num_rows($result);
   if($count == 1){
-    
+    $_SESSION['id'] = $row['id'];
+    //$_SESSION['user'] = $row['user'];
     $_SESSION['username'] = $row['username'];
     $_SESSION['email'] = $row['email'];
     $_SESSION['phone'] = $row['phone'];
     $_SESSION['address'] = $row['address'];
+    $_SESSION['photo'] = $row['photo'];
+
     
     header("location: ../admin/profile.php");
   }else{
