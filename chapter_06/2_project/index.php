@@ -13,6 +13,27 @@ include("layouts/head.php");
    <!-- Blog entries-->
    <div class="col-lg-8">
     <!-- Featured blog post-->
+    <div class="card mb-4">
+     <?php 
+       include("config/db_con.php");
+       
+       // get all post data
+       $sql = "SELECT posts.*, users.username AS name, categories.category_name AS cat_name FROM posts LEFT JOIN users ON posts.user_id = users.id LEFT JOIN categories ON posts.category_id = categories.id ORDER BY posts.id DESC";
+       $result = mysqli_query($link, $sql);
+       while ($row = mysqli_fetch_assoc($result)) :
+       ?>
+     <a href="#!"><img class="card-img-top" src="admin/actions/images/<?php echo $row['file_name'] ?>" alt="..." /></a>
+
+     <div class="card-body">
+      <div class="small text-muted"><?php echo $row['created_at'] ?> <span>
+        <h6>posted by : <?php echo $row['name'] ?></h6>
+       </span></div>
+      <h2 class="card-title"><?php echo $row['title'] ?></h2>
+      <p class="card-text"><?php echo $row['description'] ?></p>
+      <a class="btn btn-primary" href="post_detail.php?id=" <?php $row['id'] ?>>Read more →</a>
+     </div>
+     <?php endwhile; ?>
+    </div>
 
     <!-- Nested row for non-featured blog posts-->
     <div class="row">
