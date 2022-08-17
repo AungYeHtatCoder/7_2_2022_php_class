@@ -111,6 +111,35 @@ $auth = Auth::check();
               <hr>
 
              </div>
+
+
+             <div class="row mt-3">
+              <div class="col-sm-3">
+               <h6 class="mb-0 badge bg-secondary">Change Password</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+               <form action="../_actions/change_pw.php" method="POST">
+                <div class="mb-3">
+                 <label for="exampleInputEmail1" class="form-label">Email address</label>
+                 <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" value="<?php echo $auth->email; ?>">
+                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                 <label for="exampleInputPassword1" class="form-label">Password</label>
+                 <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                  value="<?php //echo $auth->password; ?>" placeholder="Enter Your Change Password">
+                </div>
+                <div class="mb-3">
+                 <input type="submit" class="btn btn-primary" value="Update Password">
+
+                </div>
+               </form>
+
+              </div>
+              <hr>
+
+             </div>
             </div>
 
 

@@ -66,4 +66,50 @@ class UsersTable
 
 		return $statement->rowCount();
 	}
+
+	public function updatePassword($id, $password)
+	{
+		$statement = $this->db->prepare(
+			"
+												UPDATE users SET password=:password WHERE id = :id"
+		);
+		$statement->execute([':password' => $password, ':id' => $id]);
+
+		return $statement->rowCount();
+	}
+
+	// get all users with join table
+	public function GetAllUserData()
+	{
+		$statement = $this->db->prepare("
+												SELECT users.*, roles.name AS role, roles.value
+												FROM users LEFT JOIN roles
+												ON users.role_id = roles.id
+								");
+		$statement->execute();
+		$row = $statement->fetchAll();
+		return $row;
+	}
+
+	public function changeRole($id, $role)
+	{
+		$statement = $this->db->prepare("
+            UPDATE users SET role_id = :role WHERE id = :id
+        ");
+
+		$statement->execute([':id' => $id, ':role' => $role]);
+
+		return $statement->rowCount();
+	}
+
+	public function delete($id)
+	{
+		$statement = $this->db->prepare("
+            DELETE FROM users WHERE id = :id
+        ");
+
+		$statement->execute([':id' => $id]);
+
+		return $statement->rowCount();
+	}
 }
