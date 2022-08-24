@@ -13,7 +13,7 @@ $data = [
 	"phone" => $_POST['phone'] ?? 'Unknown',
 	"address" => $_POST['address'] ?? 'Unknown',
 	
-	"role_id" => 2,
+	"role_id" => 1,
 ];
 
 $table = new UsersTable(new MySQL());

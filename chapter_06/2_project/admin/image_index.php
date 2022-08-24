@@ -73,7 +73,7 @@ if($query->num_rows > 0){
       <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
 
        <img src="<?php echo $imageURL; ?>" alt="" class="w-100 shadow-1-strong rounded mb-4" />
-       <p><?php echo $description; ?></p>
+       <p><?php echo substr($description, 0, 20); ?></p>
        <a href="actions/image_delete.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
       </div>
       <?php }

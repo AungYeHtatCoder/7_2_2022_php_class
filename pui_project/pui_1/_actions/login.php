@@ -14,6 +14,10 @@ $password = md5($_POST['password']);
 $table = new UsersTable(new MySQL());
 
 $user = $table->Login($email, $password);
+// echo "<pre>";
+// print_r($user);
+// echo "</pre>";
+// die();
 
 if ($user) {
 
@@ -21,8 +25,25 @@ if ($user) {
 		header("Location: ../login_form.php", "suspended=true");
 	}
 
-	$_SESSION['user'] = $user;
+	if($user->value == "3") {
+		//$_SESSION['admin'] = true;
+		$_SESSION['user'] = $user;
 	header("Location: ../admin/profile.php", "login=true");
+	}elseif($user->value == "2") {
+		$_SESSION['user'] = $user;
+		header("Location: ../admin/manager_profile.php", "login=true");
+	}elseif($user->value == "1") {
+		$_SESSION['user'] = $user;
+		header("Location: ../admin/user_profile.php", "login=true");
+	}
+// if ($user->value == "2") {
+//     $_SESSION['user'] = $user;
+//     header("Location: ../admin/manager_profile.php", "login=true");
+// }
+// 	if	($user->value == "1") {
+// 		$_SESSION['user'] = $user;
+// 		header("Location: ../admin/user_profile.php", "login=true");
+// 	}
 } else {
 	header("Location: ../login_form.php", "error=true");
 }

@@ -3,13 +3,13 @@ include("../vendor/autoload.php");
 
 use Helpers\Auth;
 
-$auth = Auth::check();
+//$auth = Auth::check();
 
 ?>
 <?php include("includes/head.php"); ?>
 
 <body class="sb-nav-fixed">
- <?php include("includes/top_header.php"); ?>
+ <?php //include("includes/top_header.php"); ?>
  <div id="layoutSidenav">
   <?php include("includes/sidebar.php"); ?>
   <div id="layoutSidenav_content">

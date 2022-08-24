@@ -28,9 +28,17 @@ if ($type === "image/jpeg" or $type === "image/png") {
 	move_uploaded_file($tmp, "photos/$name");
 
 	$auth->photo = $name;
-
-	header("Location: ../admin/profile.php?success=file");
-} else {
-	
- header("Location: ../admin/profile.php?error=type");
+if	($auth->value == "3") {
+header("Location: ../admin/profile.php?success=file");
+}elseif($auth->value == "2") {
+header("Location: ../admin/manager_profile.php?success=file");
+}elseif($auth->value == "1") {
+header("Location: ../admin/user_profile.php?success=file");
 }
+} else {
+	header("Location: ../admin/profile.php?error=file");
+} 
+// else {
+	
+//  header("Location: ../admin/profile.php?error=type");
+// }

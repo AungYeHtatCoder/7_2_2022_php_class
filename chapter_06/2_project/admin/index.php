@@ -1,4 +1,9 @@
-<?php include("layouts/head.php"); ?>
+<?php
+include("config/db_con.php");
+
+    include("function.php");
+    $auth = check();
+include("layouts/head.php"); ?>
 
 <body class="sb-nav-fixed">
  <?php include("layouts/top_navbar.php"); ?>

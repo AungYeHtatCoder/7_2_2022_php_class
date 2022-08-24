@@ -5,7 +5,7 @@ include("../vendor/autoload.php");
           use Libs\Databases\MySQL;
           use Libs\Databases\UsersTable;
           use Helpers\Auth;
-          $auth = Auth::check();
+          //$auth = Auth::check();
           $table = new UsersTable(new MySQL());
           $users = $table->GetAllUserData();
 

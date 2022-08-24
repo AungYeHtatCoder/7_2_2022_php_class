@@ -112,4 +112,62 @@ class UsersTable
 
 		return $statement->rowCount();
 	}
+
+	// user approval for admin with role value 1
+	public function approve($id)
+	{
+		$statement = $this->db->prepare("
+												UPDATE users SET suspended = 0 WHERE id = :id
+								");
+
+		$statement->execute([':id' => $id]);
+
+		return $statement->rowCount();
+	}
+
+	// user approval for admin with role value 1	
+	public function disapprove($id)
+	{
+		$statement = $this->db->prepare("
+												UPDATE users SET suspended = 1 WHERE id = :id
+								");
+		$statement->execute([':id' => $id]);
+
+		return $statement->rowCount();
+	}
+
+
+	// check isAdmin
+	public function isAdmin($id)
+	{
+		$statement = $this->db->prepare("
+												SELECT role_id FROM users WHERE id = :id
+								");
+		$statement->execute([':id' => $id]);
+		$row = $statement->fetch();
+		return $row->role_id;
+	}
+	
+
+	 // GetAdmin
+	public function GetAdmin()
+	{
+		if($this->isAdmin($_SESSION['user']['id']) == 11)
+		{
+			$statement = $this->db->prepare("
+												SELECT users.*, roles.name AS role, roles.value
+												FROM users LEFT JOIN roles
+												ON users.role_id = roles.id
+												WHERE roles.value = 3
+								");
+			$statement->execute();
+			$row = $statement->fetchAll();
+			return $row;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 }
