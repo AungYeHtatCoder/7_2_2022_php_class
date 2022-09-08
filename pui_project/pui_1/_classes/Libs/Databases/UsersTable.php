@@ -101,7 +101,16 @@ class UsersTable
 
 		return $statement->rowCount();
 	}
+public function unsuspend($id)
+	{
+		$statement = $this->db->prepare("
+            UPDATE users SET suspended=0 WHERE id = :id
+        ");
 
+		$statement->execute([':id' => $id]);
+
+		return $statement->rowCount();
+	}
 	public function delete($id)
 	{
 		$statement = $this->db->prepare("
@@ -159,6 +168,27 @@ class UsersTable
 												FROM users LEFT JOIN roles
 												ON users.role_id = roles.id
 												WHERE roles.value = 3
+								");
+			$statement->execute();
+			$row = $statement->fetchAll();
+			return $row;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	// register user account approval for admin with role value 1
+	public function RegisterUserApproval()
+	{
+		if($this->isAdmin($_SESSION['user']['id']) == 11)
+		{
+			$statement = $this->db->prepare("
+												SELECT users.*, roles.name AS role, roles.value
+												FROM users LEFT JOIN roles
+												ON users.role_id = roles.id
+												WHERE roles.value = 2
 								");
 			$statement->execute();
 			$row = $statement->fetchAll();

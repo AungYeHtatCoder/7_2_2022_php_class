@@ -129,7 +129,8 @@ include("layouts/head.php"); ?>
          </div>
          <div class="input-group mb-3">
           <label class="input-group-text" for="inputGroupFile01">Upload</label>
-          <input type="file" class="form-control" name="file" id="inputGroupFile01">
+          <input type="file" name="file" class="form-control" id="inputGroupFile04"
+           aria-describedby="inputGroupFileAddon04" aria-label="Upload">
          </div>
          <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

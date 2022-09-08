@@ -39,9 +39,31 @@ include("layouts/head.php");
       <div class="small text-muted"><?php echo date("F j, Y", strtotime($row['created_at'])); ?> ||
        <span><strong><?php echo $row['category_name'] ?></strong></span>
       </div>
-      <h2 class="card-title">Posted By : <?php echo $row['username'] ?></h2>
+      <h2 class="card-title">Posted By : <?php echo $row['username'] ?> <span><i
+         class="fa-solid fa-thumbs-up"></i></span></h2>
       <p class="card-text"><?php echo $row['description'] ?></p>
-      <a class="btn btn-primary" href="index.php">Back →</a>
+      <a class="btn btn-primary" href="index.php">Back → </a>
+      <div class="small text-muted">
+       <?php 
+        // like and dislike
+        $like = $link->query("SELECT * FROM likes WHERE post_id = '$id'");
+        $like_count = $like->num_rows;
+        $dislike = $link->query("SELECT * FROM likes WHERE post_id = '$id'");
+        $dislike_count = $dislike->num_rows; 
+        ?>
+       <span><i class="fa-solid fa-thumbs-up"></i> <?php echo $like_count; ?></span>
+       <span><i class="fa-solid fa-thumbs-down"></i> <?php echo $dislike_count; ?></span>
+
+       <!-- like and dislike form -->
+       <form action="actions/like.php" method="POST">
+        <input type="hidden" name="post_id" value="<?php echo $id; ?>">
+        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+
+        <button type="submit" name="like" class="btn btn-primary"><i class="fa-solid fa-thumbs-up"></i></button>
+        <button type="submit" name="dislike" class="btn btn-primary"><i class="fa-solid fa-thumbs-down"></i></button>
+       </form>
+
+      </div>
      </div>
     </div>
 
@@ -78,9 +100,23 @@ include("layouts/head.php");
         <!-- Parent comment-->
         <?php
         // image link url random
-        $id = $user_id;
+        // $id = $user_id;
+        // $deatil = $link->query("SELECT * FROM users WHERE id = '$id'");
+        // $profile = $deatil->fetch_assoc();
+        // get user profile image for all comments
+        $id = $row['user_id'];
         $deatil = $link->query("SELECT * FROM users WHERE id = '$id'");
         $profile = $deatil->fetch_assoc();
+        
+        
+        ?>
+        <?php 
+        // get profile image
+        // if($profile['photo'] == "") {
+        //   $image = "https://ui-avatars.com/api/?name=".$profile['username']."&background=random";
+        // } else {
+        //   $image = "admin/actions/images/".$profile['photo'];
+        // }
         
         ?>
         <div class="flex-shrink-0"><img class="rounded-circle"

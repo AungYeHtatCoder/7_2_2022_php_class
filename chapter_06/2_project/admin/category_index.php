@@ -68,7 +68,6 @@ if(isset($_POST['create'])){
           <th>Category Name</th>
           <th>Create Date</th>
           <th>Action</th>
-
          </tr>
         </tfoot>
         <tbody>
@@ -91,7 +90,6 @@ if(isset($_POST['create'])){
         echo "</td>";
         echo "</tr>";
        }
-       
        ?>
         </tbody>
        </table>

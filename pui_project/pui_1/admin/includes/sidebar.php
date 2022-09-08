@@ -47,19 +47,21 @@ $table = new UsersTable(new MySQL());
     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
      aria-expanded="false" aria-controls="collapsePages">
      <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-     Pages
+     Post Management
      <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
     </a>
     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
       <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth"
        aria-expanded="false" aria-controls="pagesCollapseAuth">
-       Authentication
+       Post
        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
       </a>
       <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
        <nav class="sb-sidenav-menu-nested nav">
-        <a class="nav-link" href="login.html">Login</a>
+        <a class="nav-link" href="category_index.php">Category List</a>
+        <a class="nav-link" href="post_index.php">Post List</a>
+
         <a class="nav-link" href="register.html">Register</a>
         <a class="nav-link" href="password.html">Forgot Password</a>
        </nav>
@@ -79,6 +81,47 @@ $table = new UsersTable(new MySQL());
       </div>
      </nav>
     </div>
+
+    <!-- add next link -->
+    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse_Pages"
+     aria-expanded="false" aria-controls="collapse_Pages">
+     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+     School Management
+     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+    </a>
+    <div class="collapse" id="collapse_Pages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth"
+       aria-expanded="false" aria-controls="pagesCollapseAuth">
+       Programmes & Courses
+       <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+      </a>
+      <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+       <nav class="sb-sidenav-menu-nested nav">
+        <a class="nav-link" href="tr_index.php">Teacher List</a>
+        <a class="nav-link" href="tr_info_index.php">Teacher Info</a>
+        <a class="nav-link" href="program_index.php">Program List</a>
+        <a class="nav-link" href="class_index.php">Class</a>
+        <a class="nav-link" href="subject_index.php">Subject</a>
+        <a class="nav-link" href="password.html">Forgot Password</a>
+       </nav>
+      </div>
+      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError"
+       aria-expanded="false" aria-controls="pagesCollapseError">
+       Error
+       <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+      </a>
+      <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
+       data-bs-parent="#sidenavAccordionPages">
+       <nav class="sb-sidenav-menu-nested nav">
+        <a class="nav-link" href="401.html">401 Page</a>
+        <a class="nav-link" href="404.html">404 Page</a>
+        <a class="nav-link" href="500.html">500 Page</a>
+       </nav>
+      </div>
+     </nav>
+    </div>
+
     <div class="sb-sidenav-menu-heading">Addons</div>
     <a class="nav-link" href="charts.html">
      <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

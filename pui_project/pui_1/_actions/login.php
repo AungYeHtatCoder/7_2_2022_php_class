@@ -35,6 +35,9 @@ if ($user) {
 	}elseif($user->value == "1") {
 		$_SESSION['user'] = $user;
 		header("Location: ../admin/user_profile.php", "login=true");
+	}elseif ($user->value == "4") {
+		$_SESSION['user'] = $user;
+		header("Location: ../admin/teacher_profile.php", "login=true");
 	}
 // if ($user->value == "2") {
 //     $_SESSION['user'] = $user;

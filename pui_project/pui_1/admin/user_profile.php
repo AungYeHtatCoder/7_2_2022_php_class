@@ -114,8 +114,6 @@ use Helpers\Auth;
              </div>
              <div class="col-sm-9 text-secondary">
               <?= $auth->phone; ?>
-
-
              </div>
              <hr>
 
@@ -126,13 +124,9 @@ use Helpers\Auth;
               </div>
               <div class="col-sm-9 text-secondary">
                <?= $auth->address; ?>
-
               </div>
               <hr>
-
              </div>
-
-
              <div class="row mt-3">
               <div class="col-sm-3">
                <h6 class="mb-0 badge bg-secondary">Change Password</h6>

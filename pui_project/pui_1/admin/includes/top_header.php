@@ -36,7 +36,10 @@
     <li><a class="dropdown-item" href="user_profile.php">User Profile</a></li>
     <?php elseif($auth->value == '2') : ?>
     <li><a class="dropdown-item" href="manager_profile.php">Manager Profile</a></li>
+    <?php elseif($auth->value == '4') : ?>
+    <li><a class="dropdown-item" href="teacher_profile.php">Teacher Profile</a></li>
     <?php endif; ?>
+
     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
     <li>
      <hr class="dropdown-divider" />
