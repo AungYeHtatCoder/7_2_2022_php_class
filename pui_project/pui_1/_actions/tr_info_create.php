@@ -23,13 +23,13 @@ $data = [
 // echo "</pre>";
 $table = new TrInfoTable(new MySQL());
 
-$data = $table->InsertTrInfo($data);
+// $data = $table->InsertTrInfo($data);
 
 // echo "<pre>";
 // print_r($data);
 // echo "</pre>";
 
-die();
+// die();
 
 if($table)
 {

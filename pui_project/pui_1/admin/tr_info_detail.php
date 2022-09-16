@@ -2,7 +2,6 @@
 include("../vendor/autoload.php");
 use Libs\Databases\MySQL;
 use Libs\Databases\TrInfoTable;
-use Helpers\Auth;
 $id = $_GET['id'];
 $table = new TrInfoTable(new MySQL());
 $teachers = $table->GetTrInfoDetail($id);
@@ -75,15 +74,22 @@ include("includes/head.php"); ?>
         </tr>
         <tr>
          <th>Class</th>
-         <td><?= $teachers->class_name; ?></td>
+         <td><?= $teachers->class_name; ?>
+          <span>
+         <th>Class Code </th>
+         <td><?= $teachers->class_code; ?></td>
+         </span>
+         </td>
         </tr>
         <tr>
          <th>Subject</th>
-         <td><?= $teachers->subject_name; ?></td>
+         <td><?= $teachers->subject_name; ?>
+
+         </td>
+         <th>Subject Code </th>
+         <td><?= $teachers->subject_code; ?></td>
         </tr>
-
        </table>
-
       </div>
      </div>
 

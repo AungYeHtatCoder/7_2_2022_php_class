@@ -13,7 +13,7 @@ include("includes/head.php");
 ?>
 
 <body class="sb-nav-fixed">
- <?php include("includes/top_header.php"); ?>
+ <?php //include("includes/top_header.php"); ?>
  <div id="layoutSidenav">
   <?php include("includes/sidebar.php"); ?>
   <div id="layoutSidenav_content">
@@ -91,9 +91,10 @@ include("includes/head.php");
               Change Role
              </a>
              <div class="dropdown-menu dropdown-menu-dark">
-              <a href="_actions/role.php?id=<?= $user->id ?>&role=1" class="dropdown-item">User</a>
+              <a href="../_actions/role.php?id=<?= $user->id ?>&role=1" class="dropdown-item">User</a>
               <a href="../_actions/role.php?id=<?= $user->id ?>&role=2" class="dropdown-item">Manager</a>
               <a href="../_actions/role.php?id=<?= $user->id ?>&role=3" class="dropdown-item">Admin</a>
+              <a href="../_actions/role.php?id=<?= $user->id ?>&role=4" class="dropdown-item">Teacher</a>
              </div>
 
              <?php if ($user->suspended) : ?>

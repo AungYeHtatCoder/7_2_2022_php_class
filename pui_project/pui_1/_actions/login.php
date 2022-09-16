@@ -11,6 +11,7 @@ use Libs\Databases\UsersTable;
 $email = $_POST['email'];
 $password = md5($_POST['password']);
 
+
 $table = new UsersTable(new MySQL());
 
 $user = $table->Login($email, $password);
@@ -39,14 +40,10 @@ if ($user) {
 		$_SESSION['user'] = $user;
 		header("Location: ../admin/teacher_profile.php", "login=true");
 	}
-// if ($user->value == "2") {
-//     $_SESSION['user'] = $user;
-//     header("Location: ../admin/manager_profile.php", "login=true");
-// }
-// 	if	($user->value == "1") {
-// 		$_SESSION['user'] = $user;
-// 		header("Location: ../admin/user_profile.php", "login=true");
-// 	}
+	if	($user->value == "5") {
+		$_SESSION['user'] = $user;
+		header("Location: ../admin/student_profile.php", "login=true");
+	}
 } else {
 	header("Location: ../login_form.php", "error=true");
 }

@@ -68,7 +68,7 @@ class ClassTable
  public function ShowById($id)
  {
   try {
-   $query = "SELECT * FROM roles WHERE id = :id";
+   $query = "SELECT * FROM classes WHERE id = :id";
    $statement = $this->db->prepare($query);
    $statement->execute(["id" => $id]);
    return $statement->fetch();

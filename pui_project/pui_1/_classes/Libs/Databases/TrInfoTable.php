@@ -16,7 +16,8 @@ class TrInfoTable
  public function GetTrInfoAllData()
  {
   $statement = $this->db->prepare("
-            SELECT tr_infos.*, programs.program_name, classes.class_name, subjects.subject_name, users.name, users.email
+            SELECT tr_infos.*, programs.program_name, classes.class_name,
+            classes.class_code, subjects.subject_name, users.name, users.email, users.photo
             FROM tr_infos 
             LEFT JOIN programs ON tr_infos.program_id = programs.id
             LEFT JOIN classes ON tr_infos.class_id = classes.id
@@ -66,7 +67,7 @@ class TrInfoTable
     {
     try {
     //$query = "SELECT * FROM tr_infos WHERE id = :id";
-    $query = "SELECT tr_infos.*, programs.program_name, classes.class_name, subjects.subject_name, users.name, users.email
+    $query = "SELECT tr_infos.*, programs.program_name, classes.class_name, classes.class_code, subjects.subject_name, subjects.subject_code, users.name, users.email, users.photo
             FROM tr_infos 
             LEFT JOIN programs ON tr_infos.program_id = programs.id
             LEFT JOIN classes ON tr_infos.class_id = classes.id
@@ -92,5 +93,20 @@ class TrInfoTable
     return $e->getMessage();
     }
     }
+
+
+    // delete tr_info
+    public function DeleteTrInfo($id)
+    {
+    try {
+    $query = "DELETE FROM tr_infos WHERE id = :id";
+    $statement = $this->db->prepare($query);
+    $statement->execute(["id" => $id]);
+    return $statement->rowCount();
+    } catch (PDOException $e) {
+    return $e->getMessage();
+    }
+    }
+    
 
 }

@@ -17,7 +17,7 @@ echo $data["name"];
 $table = new UsersTable(new MySQL());
 if($table)
 {
- $table->UserRegister($data);
+ $table->UserCreate($data);
  header("Location: ../login_form.php", "register=true");
 }else{
  header("Location: ../register_form.php", "register=false");

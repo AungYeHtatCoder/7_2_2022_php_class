@@ -51,7 +51,7 @@ include("includes/head.php"); ?>
           <td>
            <a href="tr_info_edit.php?id=<?= $info->id; ?>" class="btn btn-outline-primary">Edit</a>
            <a href="tr_info_detail.php?id=<?= $info->id; ?>" class="btn btn-outline-warning">Detail</a>
-           <a href="../_actions/user_delete.php?id=<?= $info->id; ?>" class="btn btn-outline-danger">Delete</a>
+           <a href="../_actions/tr_info_delete.php?id=<?= $info->id; ?>" class="btn btn-outline-danger">Delete</a>
           </td>
          </tr>
          <?php endforeach; ?>

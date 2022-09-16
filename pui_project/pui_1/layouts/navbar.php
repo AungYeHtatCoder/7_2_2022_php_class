@@ -15,8 +15,12 @@
       Account
      </a>
      <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="reg_form.php">Register</a></li>
+      <li><a class="dropdown-item" href="reg_form.php">User Register</a></li>
+      <li><a class="dropdown-item" href="tr_reg_form.php">TR Register</a></li>
+      <li><a class="dropdown-item" href="st_reg_form.php">Student Register</a></li>
       <li><a class="dropdown-item" href="login_form.php">Login</a></li>
+      <li>
+      <li><a class="dropdown-item" href="st_login_form.php">Student Login</a></li>
       <li>
        <hr class="dropdown-divider">
       </li>
