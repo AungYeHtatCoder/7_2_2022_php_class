@@ -17,9 +17,9 @@ include("includes/head.php"); ?>
   <div id="layoutSidenav_content">
    <main>
     <div class="container-fluid px-4">
-     <h1 class="mt-4">Registed Student Information Dashboard</h1>
+     <h1 class="mt-4">Registed KG Student Information Dashboard</h1>
      <ol class="breadcrumb mb-4">
-      <li class="breadcrumb-item active">StudentDashboard</li>
+      <li class="breadcrumb-item active">KG Student Dashboard</li>
      </ol>
      <?php //include("includes/top_card.php"); ?>
      <div class="card mb-4">
@@ -54,9 +54,9 @@ include("includes/head.php"); ?>
           <td><img src="../_actions/photos/<?= $st_info->photo; ?>" width="50px" height="50px" alt=""></td>
 
           <td>
-           <a href="tr_info_edit.php?id=<?= $st_info->id; ?>" class="btn btn-outline-primary">Edit</a>
+           <a href="kg_st_info_edit.php?id=<?= $st_info->id; ?>" class="btn btn-outline-primary">Edit</a>
            <a href="kg_st_info_detail.php?id=<?= $st_info->id; ?>" class="btn btn-outline-warning">Detail</a>
-           <a href="../_actions/tr_info_delete.php?id=<?= $st_info->id; ?>" class="btn btn-outline-danger">Delete</a>
+           <a href="../_actions/kg_st_info_delete.php?id=<?= $st_info->id; ?>" class="btn btn-outline-danger">Delete</a>
           </td>
          </tr>
          <?php endif; endforeach; ?>

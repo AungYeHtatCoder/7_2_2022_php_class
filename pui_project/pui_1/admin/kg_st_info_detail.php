@@ -26,6 +26,7 @@ include("includes/head.php"); ?>
      <?php //include("includes/top_card.php"); ?>
      <div class="card mb-4">
       <div class="card-header">
+       <span><a class="btn btn-primary" href="kg_st_info_index.php">Back</a></span>
        <i class="fas fa-table me-1"></i>
        Registed KG Student Information Details
       </div>
@@ -49,7 +50,6 @@ include("includes/head.php"); ?>
          <th>Email</th>
          <td><?= $kg_student_infos->email; ?></td>
         </tr>
-
         <tr>
          <th>Address</th>
          <td><?= $kg_student_infos->address; ?></td>
@@ -62,7 +62,6 @@ include("includes/head.php"); ?>
          <th>Academic Year</th>
          <td><?= $kg_student_infos->academic_year; ?></td>
         </tr>
-
         <tr>
          <th>Class</th>
          <td><?= $kg_student_infos->class_name; ?>
@@ -72,28 +71,35 @@ include("includes/head.php"); ?>
          </span>
          </td>
         </tr>
-
-
         <tr>
-         <th>pdf</th>
+
          <?php 
           
-         $pdf_file = $table->ReadPdfFile($id);
-         $pdf_file_name = $pdf_file->attach_file;
-         $folder_name = "../_actions/uploads/";
-         $file_path = $folder_name.$pdf_file_name;
+        //  $pdf_file_name = $pdf_file->attach_file;
+        //  $folder_name = "../_actions/uploads/";
+        //  $file_path = $folder_name.$pdf_file_name;
          
-         if($pdf_file_name == null){
-          echo "<td> No pdf file </td>";
-         }elseif($pdf_file_name !== null){
-          echo "<td><a class='btn btn-primary' href='../_actions/uploads?id=$pdf_file->id'>$pdf_file_name</a></td>";
-         }
-         else{
-          echo "not found";
-         }
+        //  if($pdf_file_name == null){
+        //   echo "<td> No pdf file </td>";
+        //  }elseif($pdf_file_name !== null){
+        //   echo "<td><a class='btn btn-primary' href='../_actions/uploads?id=$pdf_file->id'>$pdf_file_name</a></td>";
+        //  }
+        //  else{
+        //   echo "not found";
+        //  }
          // echo "<td><a class='btn btn-primary' href='../_actions/uploads?id=$pdf_file->id'>$pdf_file_name</a></td>";
          
          ?>
+        </tr>
+        <tr>
+         <th>pdf file</th>
+         <td>
+          <?php
+         $pdf_file = $table->ReadPdfFile($id);
+         ?>
+          <a class="btn btn-outline-primary" href="../_actions/uploads/<?= $pdf_file->attach_file ?>"
+           target="_blank">View File</a>
+         </td>
         </tr>
        </table>
       </div>
@@ -108,6 +114,12 @@ include("includes/head.php"); ?>
            //  echo '<p>No file found</p>';
            // }
            ?>
+
+       <embed type="application/pdf" src="../_actions/uploads/<?= $pdf_file->attach_file; ?>" width="500" height="375">
+
+       <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="../_actions/uploads/<?= $pdf_file->attach_file; ?>"></iframe>
+       </div>
       </div>
      </div>
     </div>

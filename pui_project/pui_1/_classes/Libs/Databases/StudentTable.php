@@ -103,5 +103,36 @@ class StudentTable
         $row = $statement->fetch();
         return $row;
     }
+
+
+    // student info find by id
+    public function StudentInfoFindById($id)
+    {
+        $statement = $this->db->prepare("
+            SELECT students.*, classes.class_name, classes.class_code, users.name, users.email, users.photo FROM students 
+            LEFT JOIN classes ON students.class_id = classes.id
+            LEFT JOIN users ON students.user_id = users.id
+            WHERE students.id = :id
+        ");
+        $statement->execute([
+            ':id' => $id
+        ]);
+        $row = $statement->fetch();
+        return $row;
+    }
+
+    // student info update
+    public function StudentInfoUpdate($data)
+    {
+        try{
+            $query = "UPDATE students SET student_name = :student_name, father_name = :father_name, mother_name = :mother_name, father_id_card_no = :father_id_card_no, mother_id_card_no = :mother_id_card_no, phone = :phone, address = :address, academic_year = :academic_year, class_id = :class_id, user_id = :user_id, attach_file = :attach_file WHERE id = :id";
+            $statement = $this->db->prepare($query);
+            $statement->execute($data);
+            return $statement->rowCount();
+        }catch(PDOException $e){
+            return $e->getMessage();
+        }
+    }
+
     
 }

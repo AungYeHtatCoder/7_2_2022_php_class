@@ -73,9 +73,9 @@ include("includes/head.php");
           <td><?= $code->created_at; ?></td>
           <td><?= $code->updated_at; ?></td>
           <td>
-           <?php if($auth->value == '3'){ ?>
+           <?php //if($auth->value == '3'){ ?>
            <a href="class_edit.php?id=<?= $code->id; ?>" class="btn btn-primary">Edit</a>
-           <?php } ; ?>
+           <?php //} ; ?>
            <a href="class_detail.php?id=<?= $code->id; ?>" class="btn btn-info">Show</a>
            <a href="../_actions/class_delete.php?id=<?= $code->id; ?>" class="btn btn-danger">Delete</a>
          </tr>

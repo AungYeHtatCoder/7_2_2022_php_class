@@ -16,10 +16,10 @@ $data = [
  "user_id" => $_POST['user_id'] ?? 'Unknown',
 
 ];
-echo "<pre>";
-print_r($data);
-echo "</pre>";
-die();
+// echo "<pre>";
+// print_r($data);
+// echo "</pre>";
+// die();
 
 // attach pdf && doc file upload
 $table = new StudentTable(new MySQL());
@@ -44,20 +44,11 @@ if ($type === "application/pdf" or $type === "application/doc") {
         $folder_name = $name;
         mkdir("uploads/".$folder_name);
     if (move_uploaded_file($tmp, "uploads/".$folder_name."/".$name)) {
-        // create folder equal to file name
         
-        // move file to folder
-        //move_uploaded_file($tmp, "uploads/".$folder_name."/".$name);
-        // echo "file uploaded";
-        //header("Location: ../admin/student_profile.php?success=file");
-        // if (!file_exists("uploads")) {
-        //     mkdir("uploads");
-        // }
         $data['attach_file'] = $name;
         $result = $table->StudentInfoCreateWithFile($data);
         header("Location: ../admin/student_profile.php?success=student_info_create");
 
-    //header("Location: ../admin/student_profile.php?success=file");
     } else {
         header("Location: ../admin/student_profile.php?error=type");
     }
